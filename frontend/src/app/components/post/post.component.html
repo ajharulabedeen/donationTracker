@@ -1,0 +1,222 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <div>
+    Total Follwer :
+  </div>
+  <h1>Name</h1>
+  <div>
+    <button class="btn btn-danger">Follow</button>
+  </div>
+</nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!--start : Summury ------------ -->
+      <div class="panel-group" id="id_summury">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#e_name">Summury</a>
+            </h4>
+          </div>
+          <div id="e_name" class="panel-collapse collapse ">
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">Total Needed : 0.00</li>
+                <li class="list-group-item">Collected : 0.00</li>
+                <li class="list-group-item">Sortage : 0.00</li>
+                <li class="list-group-item">Spends : 0.00</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End : Summury -------------->
+
+
+
+      <!--start : Time Line ------------ -->
+      <div class="panel-group" id="id_time_line">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#time_Line">Time Line</a>
+            </h4>
+          </div>
+          <div id="time_Line" class="panel-collapse collapse ">
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item">Start: Date</li>
+                <li class="list-group-item">End : Date</li>
+                <li class="list-group-item">Money Needed within : Date</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End : Time Line -------------->
+
+
+      <!-- start : "Description" ------------ -->
+      <div class="panel-group" id="id_description">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#description">Descriptions</a>
+            </h4>
+          </div>
+          <div id="description" class="panel-collapse collapse ">
+            <div class="panel-body">
+              put ur content here
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End : "Description" ------------ -->
+
+
+      <!-- start : "Donations" ------------ -->
+      <div class="panel-group" id="id_donation">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#donation">Donation</a>
+            </h4>
+            <h6>
+              <button class="btn btn-warning btn-sm"><b>Total : 100</b></button>
+              <button class="btn btn-info btn-sm">Next</button>
+              <input type="text" name="firstname" value="0" size="5">
+              <button class="btn btn-info btn-sm">Previous</button>
+            </h6>
+            <!-- need to use h6, other wise all the text will be treated as h4 -->
+          </div>
+          <div id="donation" class="panel-collapse collapse ">
+            <div class="panel-body">
+              put ur content here
+
+              <!-- start : new donation -->
+              <br>
+              <button data-toggle="collapse" data-target="#new_expense" class="btn btn-info">
+                New Donation
+              </button>
+              <div id="new_expense" class="collapse">
+                <form>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Example label</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                  </div>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">Another label</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                  </div>
+                </form>
+              </div>
+              <!-- end : new donation -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End : "Donation" ------------ -->
+
+
+
+
+      <!-- start : "Expenses" ------------ -->
+      <div class="panel-group" id="id_expenses">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#expenses">Expenses</a>
+              <h6>
+                <button class="btn btn-warning btn-sm"><b>Total : 100</b></button>
+                <button class="btn btn-info btn-sm">Next</button>
+                <input type="text" name="firstname" value="0" size="5">
+                <button class="btn btn-info btn-sm">Previous</button>
+              </h6>
+              <!-- need to use h6, other wise all the text will be treated as h4 -->
+            </h4>
+          </div>
+          <div id="expenses" class="panel-collapse collapse ">
+            <div class="panel-body">
+              put ur content here
+
+              <!-- start : new expense -->
+              <br>
+              <button data-toggle="collapse" data-target="#new_expense" class="btn btn-info">
+                Add new Expense
+              </button>
+              <div id="new_expense" class="collapse">
+                Lorem ipsum dolor text....
+              </div>
+              <!-- end : new expense -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End : "name of the section" ------------ -->
+
+
+
+      <!-- start : "Comments" ------------ -->
+      <div class="panel-group" id="id_comments">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#coments">Comments</a>
+              <h6>
+                <button class="btn btn-warning btn-sm"><b>Total : 100</b></button>
+                <button class="btn btn-info btn-sm">Next</button>
+                <input type="text" name="firstname" value="0" size="5">
+                <button class="btn btn-info btn-sm">Previous</button>
+              </h6>
+              <!-- need to use h6, other wise all the text will be treated as h4 -->
+            </h4>
+          </div>
+          <div id="coments" class="panel-collapse collapse ">
+            <div class="panel-body">
+              put ur content here
+
+              <!-- start : new comment -->
+              <br>
+              <button data-toggle="collapse" data-target="#new_comment" class="btn btn-info">
+                Add new
+              </button>
+              <div id="new_comment" class="collapse">
+                Lorem ipsum dolor text....
+              </div>
+              <!-- end : new comment -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End : "name of the section" ------------ -->
+
+
+
+
+
+      <!-- start : "name of the section" ------------ -->
+      <!-- <div class="panel-group" id="accordion">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#e_name">Name</a>
+            </h4>
+          </div>
+          <div id="e_name" class="panel-collapse collapse ">
+            <div class="panel-body">
+              put ur content here
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- End : "name of the section" ------------ -->
+
+
+    </div>
+  </div>
