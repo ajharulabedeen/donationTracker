@@ -15,6 +15,7 @@ class UserModel_u_Test extends TestCase
      */
     public function testExample()
     {
+        error_log("User Model Test...!");
         $this->assertTrue(true);
     }
 }

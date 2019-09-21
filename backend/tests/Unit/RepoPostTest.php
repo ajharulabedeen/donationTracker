@@ -17,9 +17,10 @@ class RepoPost extends TestCase
      * So test skip can be easily achived.
      * 
      */
-    public function testMother(){
-        echo"\n >----------- Mother Tester :---------> \n";
-        // $this->countAllPost();
+    public function testMain(){
+        echo"\n >----------- Test Name : " . get_class($this);
+        echo"\n >----------- Test Main : ---------> \n";
+        $this->countAllPost();
         // $this->countAllPost_specificUser();
         // $this->findOne(5);
     }//mother test
@@ -50,6 +51,7 @@ class RepoPost extends TestCase
         $total = $postRepo->countAll_specificUser();
         echo("\n Total Posts, a User: " . $total);
     }
+    
     public function getRepoPostImpl(){
         return new Post_Repo_Impl;
     }

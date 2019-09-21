@@ -20,8 +20,9 @@ class RepoDonationsTest extends TestCase
 
 public function test_root()
     {
-        echo("\n -------------Root Tests : RepoDonationsTest\n");
-        $this->assertTrue(true);
+        echo"\n >----------- Test Name : " . get_class($this);
+        echo("\n -------------Root Tests : ---------->\n");
+        // $this->assertTrue(true);
         // $this->saveDonationTest();
         // $this->findOneTest(2);
         // $this->deleteTest(2);

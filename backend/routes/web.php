@@ -15,20 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/z', function () {
-    $this->data['name'] = 'Ibrahim Smair'; 
-    $this->data['age']= '30'; 
-    $this->data['dep']= 'cse'; 
-    error_log("done...!");
-    return $this->data;
-});
+// Route::get('/z', function () {
+//     $this->data['name'] = 'Ibrahim Smair'; 
+//     $this->data['age']= '30'; 
+//     $this->data['dep']= 'cse'; 
+//     error_log("done...!");
+//     return $this->data;
+// });
 
 Route::get('/z_web', function () {  
     // error_log("done...!");
     // return var_dump(_POST);
     return "OK";
 });
-Route::post('getZ', 'Test@t');
+//just for testing purpose.
+Route::post('getZ', 'TestController@t');
 Route::post('post', 'Test@update');
 // Route::post('all_posts', 'Test@getAll');
 

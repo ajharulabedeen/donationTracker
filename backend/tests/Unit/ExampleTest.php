@@ -14,7 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicUnitTest()
     {
-        error_log("\nExampleTest : ");
+        error_log("\n Alhumdulilah ExampleTest Has Been Run Successfully : ");
         $this->assertTrue(true);
     }
 }//class

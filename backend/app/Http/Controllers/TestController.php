@@ -1,24 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\models\Post;
 use App\repository\Post_Repo_I;
 use App\repository\Post_Repo_Impl;
+use Exception;
 
-
-class Test extends Controller
+class TestController extends Controller
 {
     protected $post_repo;
+
     public function __construct(Post_Repo_I $post_repo)
     {
         $this->post_repo = $post_repo;
     }
-    
+
     public function t(Request $r)
     {
-        
-    }//t
+        error_log( $this->post_repo->countAll());
+        $name = $r->name;
+        error_log("\n\n--------Name Found in Controller : " . $name);
+        // return ['name' => $name];
+        return ['name' => $name, 'done' => 'ok'];
+    } //t
 
     public function update(Request $request)
     {
@@ -30,7 +36,7 @@ class Test extends Controller
 
         // $post_repo = new Post_post_repompl(); 
         error_log("");
-        $post = $this->post_repo->update($request);//for DI
+        $post = $this->post_repo->update($request); //for DI
         // $post = $post_repo->update($request);
 
         // $psot_id = $request->id;
@@ -38,11 +44,10 @@ class Test extends Controller
         // $this->setPostValues($request,$post);
 
         return $post;
-    }//update
+    } //update
 
     public function getAll(Request $request)
     {
         return $this->post_repo->getAll($request);
     }
-
 }//class

@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', 
-        ['except' => ['login','signup','onlyToken']]);
+        ['except' => ['login','signup','onlyToken',]]);
     }
 
     /**
