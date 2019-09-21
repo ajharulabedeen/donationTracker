@@ -9,23 +9,23 @@ class Route_Testing extends TestCase
 {
     public function testMain(){
         // $this->BasicExample();//working
-        // $this->postSave();//working
+        $this->postSave();//working
+        // $this->postDelete(58);// not working
         // $this->postDelete();//working
     }
 
-    public function testmahinTest(){
-        error_log("i am Mahin");
-    
-    }
 
-    public function postDelete(){
-        $response = $this->json('POST', '/delete_post/53');
-        // dd($response);
+    public function postDelete($id){
+    // public function postDelete(){
+        $response = $this->json('POST', '/delete_post/' . $id);
+        // $response = $this->json('POST', '/delete_post/57');
+        dd($response);
         // $response->assertStatus(201)->assertJson($data);
     }
 
     public function postSave(){
-        $data = [ 
+        $postDummy =  [ 
+        // 'id'=>'54',
             'user_id'=>'Tst', 
             'title'=>'UnitT',
             'description'=>'UnitTesting of URLs',
@@ -37,9 +37,9 @@ class Route_Testing extends TestCase
             'active'=>'1',
             'updated_at'=>'20-10-2019',
             'created_at'=>'20-10-2019'];
-        $response = $this->json('POST', '/save_post',$data );
+        $response = $this->json('POST', '/save_post',$postDummy );
         // dd($response);
-        $response->assertStatus(201)->assertJson($data);
+        $response->assertStatus(201)->assertJson($postDummy);
         
     }//posSave
 

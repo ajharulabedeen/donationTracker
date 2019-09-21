@@ -25,34 +25,15 @@ class Post_Repo_Impl implements Post_Repo_I
 
     public function delete($id)
     {
-        // exception not working, instead of fail message showing error in the post man.
-        // try{
-        //     error_log("1");
-        //     Post::find($id)->delete();
-        //     error_log("2");
-        //     $status = "delete success";
-        // }catch(Exception $e){
-        //     $status = "delete fail";
-        // }
-
-        $post = Post::find($id);
-        dd($post); //tst
-        error_log("Post ID Given : " . $id); //tst
-        error_log("Post ID : " . $post->id); //tst
-        if ($post != null) {
-            try {
-                $post->delete();
-                $status = "delete success";
-                error_log("Delete Done...!"); //tst
-                dd($post); //tst
-
-            } catch (Exception $e) {
-                error_log($e);
-            }
-        } else {
-            $status = "delete fail";
+        $status = true;
+        try {
+            $post = Post::select('id')->where('id', $id)->get()[0]->id;
+            $status = Post::where('id', $id)->delete();
+        } catch (Exception $e) {
+            $status = false;
         }
         return $status;
+        // return true;
     } //delete
 
     public function update(Request $request)
