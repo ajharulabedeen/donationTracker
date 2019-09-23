@@ -11,12 +11,19 @@ use Exception;
 class Post_Repo_Impl implements Post_Repo_I
 {
 
-    public function save(Request $request)
+    public function save(Post $post)
     {
-        $p = new Post;
-        $this->setPostValues($request, $p)->save();
-        return $p;
-    } //save
+        $id = -1;
+        try {
+            $post->save();
+            $id = $post->id;
+        } catch (Exception $e) {
+            $saveStatus = false;
+            error_log("Saveing Post Failed.");
+            // error_log("Saveing Post Failed. : " . $e);
+        }
+        return $id;
+    }
 
     public function findOne($id)
     {
@@ -59,37 +66,37 @@ class Post_Repo_Impl implements Post_Repo_I
     } //getAll    
 
     //-------------------------
-    private function setPostValues(Request $r, Post $p)
-    {
-        try {
-            if ($r->user_id != null)
-                $p->user_id = $r->user_id;
-            if ($r->title != null)
-                $p->title = $r->title;
-            if ($r->description != null)
-                $p->description = $r->description;
-            if ($r->total_needed != null)
-                $p->total_needed = $r->total_needed;
-            if ($r->total_collected != null)
-                $p->total_collected = $r->total_collected;
-            if ($r->total_expanse != null)
-                $p->total_expanse = $r->total_expanse;
-            if ($r->start_date != null)
-                $p->start_date = $r->start_date;
-            if ($r->end_date != null)
-                $p->end_date = $r->end_date;
-            if ($r->active != null)
-                $p->active = $r->active;
-            if ($r->updated_at != null)
-                $p->updated_at = $r->updated_at;
-            if ($r->created_at != null)
-                $p->created_at = $r->created_at;
-        } catch (Exception $e) {
-            error_log("\n\nProblem IN Data Setting...!\n\n");
-        }
+    // private function setPostValues(Request $r, Post $p)
+    // {
+    //     try {
+    //         if ($r->user_id != null)
+    //             $p->user_id = $r->user_id;
+    //         if ($r->title != null)
+    //             $p->title = $r->title;
+    //         if ($r->description != null)
+    //             $p->description = $r->description;
+    //         if ($r->total_needed != null)
+    //             $p->total_needed = $r->total_needed;
+    //         if ($r->total_collected != null)
+    //             $p->total_collected = $r->total_collected;
+    //         if ($r->total_expanse != null)
+    //             $p->total_expanse = $r->total_expanse;
+    //         if ($r->start_date != null)
+    //             $p->start_date = $r->start_date;
+    //         if ($r->end_date != null)
+    //             $p->end_date = $r->end_date;
+    //         if ($r->active != null)
+    //             $p->active = $r->active;
+    //         if ($r->updated_at != null)
+    //             $p->updated_at = $r->updated_at;
+    //         if ($r->created_at != null)
+    //             $p->created_at = $r->created_at;
+    //     } catch (Exception $e) {
+    //         error_log("\n\nProblem IN Data Setting...!\n\n");
+    //     }
 
-        return $p;
-    } //setPostValues
+    //     return $p;
+    // } //setPostValues
 
     public function countAll()
     {
@@ -101,4 +108,22 @@ class Post_Repo_Impl implements Post_Repo_I
         $userID = Util::getCurrentUserName();
         return Post::where("user_id", $userID)->count();
     }
+
+    // ------------------------- OLD CODE-----------------------------
+    //the code replaced by model.
+
+    // public function save(Request $r)
+    // {
+    //     $p = new Post();
+    //     try {
+    //         error_log("Saveing -----------");
+
+    //         $this->setPostValues($r, $p)->save();
+    //     } catch (Exception $e) {
+    //         // $saveStatus=false;
+    //         error_log("Saveing Post Failed. : ");
+    //     }
+    //     return $p;
+    // } //save
+
 }//impl class

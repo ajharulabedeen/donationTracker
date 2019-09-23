@@ -10,10 +10,10 @@ class Route_Testing extends TestCase
     public function testMain()
     {
         // $this->BasicExample();//working
-        // $this->postSave(); //working
+        $this->postSave(); //working
         // $this->postDelete(58);// working
         // $this->postFindOne(59); // working
-        $this->postUpdate(); // working
+        // $this->postUpdate(); // working
     }
 
 
@@ -52,6 +52,11 @@ class Route_Testing extends TestCase
     }
 
     //passed
+    /**
+     * for successful save an ID will be returned in the content data,
+     * if #content: "82", any value other than "-1", data saved.
+     * if #content: "-1", means data has not been saved for any reason. 
+     */
     public function postSave()
     {
         $postDummy =  [
@@ -65,8 +70,8 @@ class Route_Testing extends TestCase
             'start_date' => '20-09-2019',
             'end_date' => '20-10-2019',
             'active' => '1',
-            'updated_at' => '20-10-2019',
-            'created_at' => '20-10-2019'
+            'updated_at' => '2019-10-10',
+            'created_at' => '2019-20-10'
         ];
         $response = $this->json('POST', '/save_post', $postDummy);
         dd($response);
