@@ -38,4 +38,4 @@ Route::post('all_posts', 'PostController@getAll');
 Route::post('save_post', 'PostController@savePost');//tested
 Route::post('update_post', 'PostController@updatePost');
 Route::post('delete_post/{id}', 'PostController@deletePost');//tested
-Route::get('/single_post/{id}', 'PostController@findOne');//tested
+Route::get('/single_post/{id}', 'PostController@findOne');

@@ -10,17 +10,17 @@ class Route_Testing extends TestCase
     public function testMain()
     {
         // $this->BasicExample();//working
-        $this->postSave(); //working
+        // $this->postSave(); //working
         // $this->postDelete(58);// working
         // $this->postFindOne(59); // working
-        // $this->postUpdate(); // working
+        $this->postUpdate(); // working
     }
 
 
     public function postUpdate()
     {
-        $postDummy =  [
-            'id'=>'59',
+        $postDummyUpdate =  [
+            'id'=>'2',
             'user_id' => 'Tst',
             'title' => 'Post title 59 updated.',
             'description' => 'UnitTesting of URLs',
@@ -30,12 +30,14 @@ class Route_Testing extends TestCase
             'start_date' => '20-09-2019',
             'end_date' => '20-10-2019',
             'active' => '1',
-            'updated_at' => '20-10-2019',
-            'created_at' => '20-10-2019'
+            'updated_at' => '2019-02-11',
+            'created_at' => '2019-02-21'
         ];
-        $response = $this->json('POST', '/update_post', $postDummy);
-        dd($response);
+        $response = $this->json('POST', '/update_post', $postDummyUpdate);
+        // dd($response);
     }
+
+
 
     public function postFindOne($id)
     {

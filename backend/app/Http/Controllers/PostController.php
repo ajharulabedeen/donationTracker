@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\models\Post;
 use App\repository\Post_Repo_I;
-use App\repository\Post_Repo_Impl;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -26,10 +24,11 @@ class PostController extends Controller
 
     public function updatePost(Request $request)
     {
+        $postUpdate = $this->setPostValues($request, new Post());
         if ($request->id == null)
             return response("No ID. Pls send data with ID.", 510);
         else
-            return $this->post_repo->update($request);
+            return $this->post_repo->update($postUpdate);
     } //updatePost
 
     public function deletePost($id)
@@ -50,6 +49,8 @@ class PostController extends Controller
     private function setPostValues(Request $r, Post $p)
     {
         try {
+            if ($r->id != null)
+                $p->id = $r->id;
             if ($r->user_id != null)
                 $p->user_id = $r->user_id;
             if ($r->title != null)

@@ -21,33 +21,71 @@ class RepoPost extends TestCase
      */
     public function testMain()
     {
-        echo "\n >----------- Test Name : " . get_class($this);
         echo "\n >----------- Test Main : ---------> \n";
         // $this->countAllPost();
         // $this->countAllPost_specificUser();
-        // $this->findOne(54);
         // $this->postDelete(54);
-        for ($x = 0; $x < 10; $x++) {
-            $this->postSave();
-        }
+        // $this->postSave();
+        // $this->postUpdate();
+        // $this->findOne(2);
+        // $this->getRepoPostImpl()->update2();
+        $this->readOne();
     } //mother test
+
+    public function readOne(){
+        $p = Post::find(1);
+        $p->title = "new tile";
+        $p->description = "dddd";
+        $p->save();
+        dd($p);
+        $p->update();
+    }
+
+    public function postUpdate()
+    {
+        $postDummyUpdate = new Post();
+        $postDummyUpdate->id = '2';
+        $postDummyUpdate->user_id = 'Tst';
+        $postDummyUpdate->title = 'Post Updated Repo Test........';
+        $postDummyUpdate->description = 'UnitTesting of URLs';
+        $postDummyUpdate->total_needed = '2000';
+        $postDummyUpdate->total_collected = '1000';
+        $postDummyUpdate->total_expanse = '500';
+        $postDummyUpdate->start_date = '22-09-2019';
+        $postDummyUpdate->end_date = '22-10-2019';
+        $postDummyUpdate->active = '1';
+        $postDummyUpdate->updated_at = '2019-09-24';
+        $postDummyUpdate->created_at = '2019-09-22';
+
+        echo '\n----PostUpdate----\n';
+        $postRepoSave = $this->getRepoPostImpl();
+        dd($postRepoSave->update($postDummyUpdate));
+        if ($postRepoSave == false) {
+            error_log("\n\nTest : Data Save Failed.");
+        } else {
+            error_log("Saved Post ID : " . $postRepoSave);
+        }
+    }
+
 
     //not completed
     public function postSave()
     {
         $postDummy = new Post();
         // $postDummy->id ='';
-        $postDummy->user_id = 'Tst';
-        $postDummy->title = 'Post Save Repo Test.';
-        $postDummy->description = 'UnitTesting of URLs';
-        $postDummy->total_needed = '2000';
-        $postDummy->total_collected = '1000';
-        $postDummy->total_expanse = '500';
-        $postDummy->start_date = '22-09-2019';
-        $postDummy->end_date = '22-10-2019';
-        $postDummy->active = '1';
-        $postDummy->updated_at = '2019-09-22';
-        $postDummy->created_at = '2019-09-22';
+        {
+            $postDummy->user_id = 'Tst';
+            $postDummy->title = 'Post Save Repo Test.';
+            $postDummy->description = 'UnitTesting of URLs';
+            $postDummy->total_needed = '2000';
+            $postDummy->total_collected = '1000';
+            $postDummy->total_expanse = '500';
+            $postDummy->start_date = '22-09-2019';
+            $postDummy->end_date = '22-10-2019';
+            $postDummy->active = '1';
+            $postDummy->updated_at = '2019-09-22';
+            $postDummy->created_at = '2019-09-22';
+        }
 
         // $postDummy->updated_at = '22-09-2019';// not working.
         // $postDummy->created_at = '22-09-2019';// not working.        
@@ -55,11 +93,11 @@ class RepoPost extends TestCase
         echo '\n----PostSave----\n';
         $postRepoSave = $this->getRepoPostImpl();
         dd($postRepoSave->save($postDummy));
-        if( $postRepoSave == -1){
+        if ($postRepoSave == -1) {
             error_log("\n\nTest : Data Save Failed.");
-        }else{
+        } else {
             error_log("Saved Post ID : " . $postRepoSave);
-        }   
+        }
 
 
         //working, printing 10 lines.  but not saving 10 entry.

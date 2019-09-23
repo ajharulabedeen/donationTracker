@@ -43,12 +43,26 @@ class Post_Repo_Impl implements Post_Repo_I
         // return true;
     } //delete
 
-    public function update(Request $request)
+    public function update(Post $postUpdate)
     {
-        $psot_id = $request->id;
-        $post = Post::find($psot_id);
-        $this->setPostValues($request, $post)->save();
-        return  $post;
+        $raedOld = false;
+        $updateStatus = false;
+        try {
+            $psot_id = $postUpdate->id;
+            $postOrgin = Post::find($psot_id);
+            $raedOld = true;
+        } catch (Exception $e) {
+            error_log("Post Update : failed to read existig post.");
+        }
+        if ($raedOld) {
+            try {
+                $this->setPostValues($postOrgin, $postUpdate)->update();
+                $updateStatus = true;
+            } catch (Exception $e) {
+                error_log("Post Update : Failed to save updated post." . "\n\n" . $e);
+            }
+        }
+        return  $updateStatus;
     } //update
 
 
@@ -66,37 +80,37 @@ class Post_Repo_Impl implements Post_Repo_I
     } //getAll    
 
     //-------------------------
-    // private function setPostValues(Request $r, Post $p)
-    // {
-    //     try {
-    //         if ($r->user_id != null)
-    //             $p->user_id = $r->user_id;
-    //         if ($r->title != null)
-    //             $p->title = $r->title;
-    //         if ($r->description != null)
-    //             $p->description = $r->description;
-    //         if ($r->total_needed != null)
-    //             $p->total_needed = $r->total_needed;
-    //         if ($r->total_collected != null)
-    //             $p->total_collected = $r->total_collected;
-    //         if ($r->total_expanse != null)
-    //             $p->total_expanse = $r->total_expanse;
-    //         if ($r->start_date != null)
-    //             $p->start_date = $r->start_date;
-    //         if ($r->end_date != null)
-    //             $p->end_date = $r->end_date;
-    //         if ($r->active != null)
-    //             $p->active = $r->active;
-    //         if ($r->updated_at != null)
-    //             $p->updated_at = $r->updated_at;
-    //         if ($r->created_at != null)
-    //             $p->created_at = $r->created_at;
-    //     } catch (Exception $e) {
-    //         error_log("\n\nProblem IN Data Setting...!\n\n");
-    //     }
-
-    //     return $p;
-    // } //setPostValues
+    //refactor
+    private function setPostValues(Post $postOrgin, Post $postUpdate)
+    {
+        try {
+            if ($postUpdate->user_id != null)
+                $postOrgin->user_id = $postUpdate->user_id;
+            if ($postUpdate->title != null)
+                $postOrgin->title = $postUpdate->title;
+            if ($postUpdate->description != null)
+                $postOrgin->description = $postUpdate->description;
+            if ($postUpdate->total_needed != null)
+                $postOrgin->total_needed = $postUpdate->total_needed;
+            if ($postUpdate->total_collected != null)
+                $postOrgin->total_collected = $postUpdate->total_collected;
+            if ($postUpdate->total_expanse != null)
+                $postOrgin->total_expanse = $postUpdate->total_expanse;
+            if ($postUpdate->start_date != null)
+                $postOrgin->start_date = $postUpdate->start_date;
+            if ($postUpdate->end_date != null)
+                $postOrgin->end_date = $postUpdate->end_date;
+            if ($postUpdate->active != null)
+                $postOrgin->active = $postUpdate->active;
+            if ($postUpdate->updated_at != null)
+                $postOrgin->updated_at = $postUpdate->updated_at;
+            if ($postUpdate->created_at != null)
+                $postOrgin->created_at = $postUpdate->created_at;
+        } catch (Exception $e) {
+            error_log("\n\nProblem IN Data Setting...!\n\n");
+        }
+        return $postOrgin;
+    } //setPostValues
 
     public function countAll()
     {
