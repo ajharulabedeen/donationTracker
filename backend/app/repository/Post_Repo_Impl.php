@@ -5,6 +5,7 @@ namespace App\repository;
 use App\repository\Post_DB_I;
 use Illuminate\Http\Request;
 use App\models\Post;
+// use App\Post;
 use App\Utils\Util;
 use Exception;
 
@@ -45,6 +46,7 @@ class Post_Repo_Impl implements Post_Repo_I
 
     public function update(Post $postUpdate)
     {
+        
         $raedOld = false;
         $updateStatus = false;
         try {

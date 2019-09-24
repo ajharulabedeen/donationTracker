@@ -2,11 +2,11 @@
 
 namespace Tests\Unit;
 
+use App\models\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\repository\Post_Repo_Impl;
-use App\models\Post;
 
 class RepoPost extends TestCase
 {
@@ -26,27 +26,18 @@ class RepoPost extends TestCase
         // $this->countAllPost_specificUser();
         // $this->postDelete(54);
         // $this->postSave();
-        // $this->postUpdate();
+        $this->postUpdate();//not
         // $this->findOne(2);
         // $this->getRepoPostImpl()->update2();
-        $this->readOne();
+        // $this->readOne();//working
     } //mother test
 
     public function readOne(){
-        $p = Post::find(1);
-        $p->title = "new tile";
-        $p->description = "dddd";
-        $p->save();
-        dd($p);
-        $p->update();
-    }
-
-    public function postUpdate()
-    {
-        $postDummyUpdate = new Post();
-        $postDummyUpdate->id = '2';
+        $postDummyUpdate = Post::find(2);
+        // $postDummyUpdate = new Post();
+        // $postDummyUpdate->id = '1';
         $postDummyUpdate->user_id = 'Tst';
-        $postDummyUpdate->title = 'Post Updated Repo Test........';
+        $postDummyUpdate->title = '........';
         $postDummyUpdate->description = 'UnitTesting of URLs';
         $postDummyUpdate->total_needed = '2000';
         $postDummyUpdate->total_collected = '1000';
@@ -54,17 +45,38 @@ class RepoPost extends TestCase
         $postDummyUpdate->start_date = '22-09-2019';
         $postDummyUpdate->end_date = '22-10-2019';
         $postDummyUpdate->active = '1';
-        $postDummyUpdate->updated_at = '2019-09-24';
-        $postDummyUpdate->created_at = '2019-09-22';
+        // $postDummyUpdate->updated_at = '2019-09-24';
+        // $postDummyUpdate->created_at = '2019-09-22';
+        $postDummyUpdate->save();
+
+    }
+
+    public function postUpdate()
+    {
+        $postDummyUpdate = new Post();
+        $postDummyUpdate->id = '2';
+        // $postDummyUpdate->user_id = 'Tst';
+        // $postDummyUpdate->title = '++++........';
+        $postDummyUpdate->description = '********Description UnitTesting of URLs';
+        // $postDummyUpdate->total_needed = '2000';
+        // $postDummyUpdate->total_collected = '1000';
+        // $postDummyUpdate->total_expanse = '500';
+        // $postDummyUpdate->start_date = '22-09-2019';
+        // $postDummyUpdate->end_date = '22-10-2019';
+        // $postDummyUpdate->active = '1';
+        // $postDummyUpdate->updated_at = '2019-09-24';
+        // $postDummyUpdate->created_at = '2019-09-22';
 
         echo '\n----PostUpdate----\n';
         $postRepoSave = $this->getRepoPostImpl();
-        dd($postRepoSave->update($postDummyUpdate));
-        if ($postRepoSave == false) {
+        // dd($postRepoSave->update($postDummyUpdate));
+        $updateStatus = $postRepoSave->update($postDummyUpdate);
+        if ($updateStatus == false) {
             error_log("\n\nTest : Data Save Failed.");
         } else {
-            error_log("Saved Post ID : " . $postRepoSave);
+            error_log("Saved Post ID : " . $postDummyUpdate->id);
         }
+        dd($updateStatus);
     }
 
 

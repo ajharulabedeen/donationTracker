@@ -14,7 +14,7 @@ class Donations extends Migration
     public function up()
     {
         Schema::create('donations', function (Blueprint $table) {
-            $table->id('id',191);
+            $table->increments('id',191);
             $table->string('post_id',191);
             $table->string('amount',191);
             $table->string('date');

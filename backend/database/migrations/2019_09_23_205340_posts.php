@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Post extends Migration
+class Posts extends Migration
 {
     /**
      * Run the migrations.
@@ -24,6 +24,7 @@ class Post extends Migration
             $table->string('start_date');
             $table->string('end_date');
             $table->boolean('active');
+            $table->timestamps();
         });
     }
 

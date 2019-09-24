@@ -23,18 +23,19 @@ class Route_Testing extends TestCase
             'id'=>'2',
             'user_id' => 'Tst',
             'title' => 'Post title 59 updated.',
-            'description' => 'UnitTesting of URLs',
-            'total_needed' => '2000',
-            'total_collected' => '300',
-            'total_expanse' => '800',
-            'start_date' => '20-09-2019',
-            'end_date' => '20-10-2019',
-            'active' => '1',
-            'updated_at' => '2019-02-11',
-            'created_at' => '2019-02-21'
+            // 'description' => 'UnitTesting of URLs',
+            // 'total_needed' => '2000',
+            // 'total_collected' => '300',
+            // 'total_expanse' => '800',
+            // 'start_date' => '20-09-2019',
+            // 'end_date' => '20-10-2019',
+            // 'active' => '1',
+            // 'updated_at' => '2019-02-11',
+            // 'created_at' => '2019-02-21'
         ];
         $response = $this->json('POST', '/update_post', $postDummyUpdate);
-        // dd($response);
+        dd($response);
+        // $response->assertExactJson(['false']);//not working.
     }
 
 
