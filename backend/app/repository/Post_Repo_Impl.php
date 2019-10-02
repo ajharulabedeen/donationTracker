@@ -119,6 +119,10 @@ class Post_Repo_Impl implements Post_Repo_I
         return Post::all()->count();
     }
 
+    /**
+     * will return the total number of post, of the current logged in user.
+     * for testting purpose, user name has been set staticaly.
+     */
     public function countAll_specificUser()
     {
         $userID = Util::getCurrentUserName();

@@ -26,9 +26,8 @@ class RepoPost extends TestCase
         // $this->countAllPost_specificUser();
         // $this->postDelete(54);
         // $this->postSave();
-        $this->postUpdate();//not
-        // $this->findOne(2);
-        // $this->getRepoPostImpl()->update2();
+        // $this->postUpdate();
+        $this->findOne(2);
         // $this->readOne();//working
     } //mother test
 

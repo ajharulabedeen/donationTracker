@@ -6,7 +6,7 @@ class Util{
          * for this moment a dummy value sent, later current logged user name will be 
          * taken form the auth.
          */
-        return "12";
+        return "tst";
     }
 
     public static function getCurrentDate(){
